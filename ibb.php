@@ -70,3 +70,20 @@ function ibb_register_mce_button($buttons)
   array_push($buttons, 'ibb_mce_button');
   return $buttons;
 }
+
+
+//IBB plugin settings page
+
+function ibb_plugin_page()
+{
+  $page_title = 'Inline banner block options';
+  $menu_title = 'IBB';
+  $capatibily = 'manage_options';
+  $slug = 'ibb_plugin';
+  $callback = 'ibb_page_html';
+  $icon = 'dashicons-schedule';
+  $position = 60;
+
+  add_menu_page($page_title, $menu_title, $capatibily, $slug, $callback, $icon, $position);
+}
+add_action('admin_menu', 'ibb_plugin_page');
