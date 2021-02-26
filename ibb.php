@@ -8,7 +8,17 @@
  * Author URI:        https://github.com/hvoyka
  */
 
+//add css
+function ibb_css()
+{
+  $plugin_url = plugin_dir_url(__FILE__);
+
+  wp_enqueue_style('ibb-style', $plugin_url . 'css/ibb-style.css');
+}
+add_action('wp_enqueue_scripts', 'ibb_css');
+
 //Create shorcode ibb
+
 function inline_banner_func($atr)
 {
   shortcode_atts(
@@ -20,13 +30,13 @@ function inline_banner_func($atr)
   );
   $postLink = get_permalink($atr['id']);
 
-  $block = "<div class='ibb'>
-							<hr>
-							<h3>SHORT CODE BANNER</h3>
-
-							<a class='ibb__link' href='$postLink' />$atr[name]</a>
-							<hr>
-						</div>";
+  $block = "
+  <div class='ibb'>
+    <div class='ibb__inner'>
+      <h3 class='ibb__title'>READ</h3>
+      <a class='ibb__link' href='$postLink' />$atr[name]</a>
+    </div>
+</div>";
 
   return $block;
 }
