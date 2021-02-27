@@ -84,7 +84,7 @@ function ibb_plugin_page()
   $capatibily = 'manage_options';
   $slug = 'ibb_plugin';
   $callback = 'ibb_page_html';
-  $icon = 'dashicons-schedule';
+  $icon = 'dashicons-align-none';
   $position = 60;
 
   add_menu_page($page_title, $menu_title, $capatibily, $slug, $callback, $icon, $position);
