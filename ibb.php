@@ -101,7 +101,7 @@ add_action('admin_init', 'ibb_register_settings');
 
 function ibb_page_html()
 { ?>
-  <div class="wrap top-bar-wrapper">
+  <div class="wrap ibb__wrap">
     <form method="post" action="options.php">
       <?php settings_errors() ?>
       <?php settings_fields('ibb_option_group'); ?>
@@ -112,3 +112,11 @@ function ibb_page_html()
   </div>
 
 <?php }
+
+
+add_action('admin_enqueue_scripts', 'ibb_admin_style');
+
+function ibb_admin_style()
+{
+  wp_enqueue_style('ibb_admin-style', plugins_url('css/ibb-admin-style.css', __FILE__));
+}
