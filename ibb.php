@@ -86,4 +86,18 @@ function ibb_plugin_page()
 
   add_menu_page($page_title, $menu_title, $capatibily, $slug, $callback, $icon, $position);
 }
+
 add_action('admin_menu', 'ibb_plugin_page');
+
+function ibb_register_settings()
+{
+  register_setting('ibb_options_group', 'ibb_field');
+}
+add_action('admin_init', 'ibb_register_settings');
+
+function ibb_page_html()
+{ ?>
+  <div class="wrap ibb__wrap">
+    <p>Test...</p>
+  </div>
+<?php }
