@@ -29,11 +29,14 @@ function inline_banner_func($atr)
     $atr
   );
   $postLink = get_permalink($atr['id']);
+  $ibb_title = 'READ';
+  if (get_option('ibb_field')) $ibb_title = get_option('ibb_field');
+
 
   $block = "
   <div class='ibb'>
     <div class='ibb__inner'>
-      <h3 class='ibb__title'>READ</h3>
+      <h3 class='ibb__title'>$ibb_title</h3>
       <a class='ibb__link' href='$postLink' />$atr[name]</a>
     </div>
 </div>";
@@ -91,13 +94,21 @@ add_action('admin_menu', 'ibb_plugin_page');
 
 function ibb_register_settings()
 {
-  register_setting('ibb_options_group', 'ibb_field');
+  register_setting('ibb_option_group', 'ibb_field');
 }
+
 add_action('admin_init', 'ibb_register_settings');
 
 function ibb_page_html()
 { ?>
-  <div class="wrap ibb__wrap">
-    <p>Test...</p>
+  <div class="wrap top-bar-wrapper">
+    <form method="post" action="options.php">
+      <?php settings_errors() ?>
+      <?php settings_fields('ibb_option_group'); ?>
+      <label for="ibb_field_title">IBB Title:</label>
+      <input name="ibb_field" id="ibb_field_title" type="text" value=" <?php echo get_option('ibb_field'); ?> ">
+      <?php submit_button(); ?>
+    </form>
   </div>
+
 <?php }
