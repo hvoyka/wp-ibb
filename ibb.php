@@ -28,7 +28,7 @@ function inline_banner_func($atr)
     ),
     $atr
   );
-  $postLink = get_permalink($atr['id']);
+  $postLink = get_permalink($atr['posts']);
   $ibb_title = 'READ';
   if (get_option('ibb_field')) $ibb_title = get_option('ibb_field');
 
